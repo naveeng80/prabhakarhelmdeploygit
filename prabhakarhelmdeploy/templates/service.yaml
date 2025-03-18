@@ -1,20 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: prabhakar-service
+  name: {{ .Values.myservice.servicename }}
+  namespace: {{ .Release.Namespace }}
 spec:
   selector:
-    app: prabhakar
+    app: {{ .Values.appname }}
   ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 3001
-      nodePort: 30081
-  type: NodePort  
- 
-  
-  
-  
-  
-  
-  
+    - protocol: {{ .Values.myservice.myprotocol }}
+      port: {{ .Values.myservice.port }}
+      targetPort: {{ .Values.myimage.containerandtargetPort }}
+      nodePort: {{ .Values.myimage.NodePort }}
+  type: {{ .Values.myservice.type }}
