@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: prabhakar-service
+spec:
+  selector:
+    app: prabhakar
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3001
+      nodePort: 30081
+  type: NodePort  
+ 
+  
+  
+  
+  
+  
+  

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prabhakar-deployment
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      app: prabhakar
+  template:
+    metadata:
+      labels:
+        app: prabhakar
+    spec:
+      containers:
+      - name: prabhakar-container
+        image: ghcr.io/naveeng80/naveenworld:latestv1
+        ports:
+        - containerPort: 3001
+      imagePullSecrets:
+        - name: github-naveen-secret
